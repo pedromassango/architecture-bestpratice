@@ -1,9 +1,11 @@
-package com.pedromassango.architecture_bestpratice
+package com.pedromassango.architecture_bestpratice.ui
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.pedromassango.architecture_bestpratice.data.models.Phrase
+import com.pedromassango.architecture_bestpratice.R
 import kotlinx.android.synthetic.main.row_phrase.view.*
 
 class MyHolder(private val v: View): RecyclerView.ViewHolder(v){
@@ -35,4 +37,11 @@ class MyAdpter(private val data: ArrayList<Phrase> = arrayListOf()):
         data.add( phrase)
         notifyDataSetChanged()
     }
+
+    fun addAll(phrases: List<Phrase>){
+        data.addAll( phrases)
+        notifyDataSetChanged()
+    }
+
+
 }

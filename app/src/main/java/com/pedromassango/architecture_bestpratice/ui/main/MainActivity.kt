@@ -1,14 +1,21 @@
-package com.pedromassango.architecture_bestpratice
+package com.pedromassango.architecture_bestpratice.ui.main
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
+import com.pedromassango.architecture_bestpratice.data.models.Phrase
+import com.pedromassango.architecture_bestpratice.R
+import com.pedromassango.architecture_bestpratice.ui.MyAdpter
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var mainViewModel: MainViewModel
 
     private val adapter: MyAdpter by lazy{
         MyAdpter()
@@ -21,10 +28,24 @@ class MainActivity : AppCompatActivity() {
         // inialize my recyclerView
         recycler_view.adapter = adapter
 
+        // setup the ViewModel
+        mainViewModel = ViewModelProviders.of(this)
+                .get(MainViewModel::class.java)
 
-        adapter.add( Phrase(1, "Simple Test"))
-        adapter.add( Phrase(4, "Simple Test 2"))
-        adapter.add( Phrase(5, "Simple Test 3"))
+        // listen for changes  and update the UI
+        mainViewModel.getAllPhrases().observe(this, Observer{
+
+            if(it!!.isEmpty()){
+                tv_phrases_count.text = "No data."
+                return@Observer
+            }
+
+
+            adapter.addAll( it)
+        })
+
+        // load all data
+        mainViewModel.loadAllData()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
