@@ -1,9 +1,9 @@
 package com.pedromassango.architecture_bestpratice.ui
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.pedromassango.architecture_bestpratice.data.models.Phrase
 import com.pedromassango.architecture_bestpratice.R
 import kotlinx.android.synthetic.main.row_phrase.view.*

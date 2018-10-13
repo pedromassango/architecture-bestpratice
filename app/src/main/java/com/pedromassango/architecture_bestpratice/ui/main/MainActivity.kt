@@ -1,13 +1,13 @@
 package com.pedromassango.architecture_bestpratice.ui.main
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.pedromassango.architecture_bestpratice.data.models.Phrase
 import com.pedromassango.architecture_bestpratice.R
 import com.pedromassango.architecture_bestpratice.ui.MyAdpter
