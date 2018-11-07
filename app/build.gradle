@@ -35,6 +35,8 @@ dependencies {
 
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version" // use kapt for Kotlin
+    // Koin
+    implementation 'org.koin:koin-android-viewmodel:1.0.1'
 
     // Tests
     testImplementation 'junit:junit:4.12'

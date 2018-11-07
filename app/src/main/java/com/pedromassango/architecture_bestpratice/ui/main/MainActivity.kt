@@ -12,10 +12,12 @@ import com.pedromassango.architecture_bestpratice.data.models.Phrase
 import com.pedromassango.architecture_bestpratice.R
 import com.pedromassango.architecture_bestpratice.ui.MyAdpter
 import kotlinx.android.synthetic.main.main_activity.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mainViewModel: MainViewModel
+    // setup the ViewModel
+    private val mainViewModel: MainViewModel by viewModel()
 
     private val adapter: MyAdpter by lazy{
         MyAdpter()
@@ -27,10 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         // inialize my recyclerView
         recycler_view.adapter = adapter
-
-        // setup the ViewModel
-        mainViewModel = ViewModelProviders.of(this)
-                .get(MainViewModel::class.java)
 
         // listen for changes  and update the UI
         mainViewModel.getAllPhrases().observe(this, Observer{
